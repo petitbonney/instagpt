@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "instagpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petitbonney/instagpt.git"
+  },
+  "author": "petitbonney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petitbonney/instagpt/issues"
+  },
+  "homepage": "https://github.com/petitbonney/instagpt#readme",
+  "dependencies": {
+    "chatgpt": "^5.2.5",
+    "dotenv": "^16.3.1",
+    "instagram-private-api": "^1.45.3",
+    "set-interval-async": "^3.0.3"
+  }
+}
