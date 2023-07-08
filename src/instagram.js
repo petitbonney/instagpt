@@ -59,12 +59,19 @@ const getPending = async () => {
 
 const approveAll = async () => {
   const pending = await getPending();
-  return await ig.directThread.approveMultiple(pending.keys());
+  const threadIds = new Set();
+  pending.forEach((th) => threadIds.add(th.thread_id));
+  return await ig.directThread.approveMultiple(Array.from(threadIds));
 };
 
 const getNotSeenMessages = (thread, pk) => {
-  const lastSeenAt = parseInt(thread.last_seen_at[pk].timestamp);
-  return thread.items.filter((x) => parseInt(x.timestamp) > lastSeenAt);
+  const lastSeen = thread.last_seen_at[pk];
+  if (lastSeen == undefined) {
+    return thread.items;
+  } else {
+    const lastSeenAt = parseInt(lastSeen.timestamp);
+    return thread.items.filter((x) => parseInt(x.timestamp) > lastSeenAt);
+  }
 };
 
 export default {
